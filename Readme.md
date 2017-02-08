@@ -11,6 +11,7 @@ Example
 
 from FyeldGenerator import generate_field
 import matplotlib.pyplot as plt
+import numpy as np
 
 # Helper that generates power-law power spectrum
 def Pkgen(n):
