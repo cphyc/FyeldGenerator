@@ -31,3 +31,9 @@ field = generate_field(distrib, Pkgen(2), shape)
 plt.imshow(field, cmap='seismic')
 
 ```
+
+Install
+-------
+```bash
+pip install -e git+https://github.com/cphyc/FyeldGenerator.git#egg=FyeldGenerator
+```
