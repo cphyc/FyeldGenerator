@@ -39,13 +39,19 @@ def generate_field(statistic, power_spectrum, shape):
     fftfield = np.fft.rfftn(field)
 
     # Compute the k grid
-    kgrid = [
-        k.T
-        for k in np.meshgrid(*[
-                np.fft.fftfreq(s) if (i < len(shape)-1)
-                else np.fft.rfftfreq(s)
-                for i, s in enumerate(shape)])
-    ]
+    all_k = [np.fft.fftfreq(s) for s in shape[:-1]] + \
+            [np.fft.rfftfreq(shape[-1])]
+    new_shape = np.array(shape)
+    new_shape[-1] = shape[-1] // 2 + 1
+
+    kgrid = [np.zeros(new_shape) for _ in range(len(shape))]
+
+    for i, kg in enumerate(kgrid):
+        sl = [slice(None) if j == i
+              else None
+              for j in range(len(shape))
+              ]
+        kg[:] = all_k[i][sl]
 
     def Pkn(kgrid):
         k2 = np.sqrt(np.sum([k**2 for k in kgrid], axis=0))
