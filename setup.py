@@ -12,8 +12,14 @@ with open('LICENSE') as f:
 setup(
     name='FyeldGenerator',
     version='0.1.0',
-    description='Simple package to generate random field.',
+    description='Simple package to symmetric generate random field.',
     long_description=readme,
+    classifiers=[
+        'Development status :: 1 - Alpha',
+        'License :: MIT',
+        'Programming Language :: Python',
+        'Topic :: Gaussian Random Field'
+    ],
     author='Corentin Cadiou',
     author_email='contact@cphyc.me',
     url='https://github.com/cphyc/FyeldGenerator',
@@ -22,5 +28,6 @@ setup(
     install_requires=[
         'numpy',
         'six'
-    ]
+    ],
+    include_package_data=True
 )
