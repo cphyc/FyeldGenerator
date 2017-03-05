@@ -34,6 +34,13 @@ plt.imshow(field, cmap='seismic')
 
 Install
 -------
+It is now on pypi!
+For the "official" release, use:
+```bash
+pip install FyeldGenerator
+```
+
+For the latest release:
 ```bash
 pip install -e git+https://github.com/cphyc/FyeldGenerator.git#egg=FyeldGenerator
 ```
