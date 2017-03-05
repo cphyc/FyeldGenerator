@@ -18,5 +18,9 @@ setup(
     author_email='contact@cphyc.me',
     url='https://github.com/cphyc/FyeldGenerator',
     license=license,
-    packages=find_packages(exclude=('tests', 'docs'))
+    packages=find_packages(exclude=('tests', 'docs')),
+    install_requires=[
+        'numpy',
+        'six'
+    ]
 )
