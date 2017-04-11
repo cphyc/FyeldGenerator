@@ -43,9 +43,18 @@ def generate_field(statistic, power_spectrum, shape, fft=np.fft, fft_args=dict()
     # Compute the FFT of the field
     fftfield = fft.rfftn(field, **fft_args)
 
+    try:
+        fftfreq = fft.fftfreq
+        rfftfreq = fft.rfftfreq
+    except:
+        # Fallback on numpy for the frequencies
+        fftfreq = np.fft.fftfreq
+        rfftfreq = np.fft.rfftfreq
+
+
     # Compute the k grid
-    all_k = [fft.fftfreq(s) for s in shape[:-1]] + \
-            [fft.rfftfreq(shape[-1])]
+    all_k = [fftfreq(s) for s in shape[:-1]] + \
+            [rfftfreq(shape[-1])]
     new_shape = np.array(shape)
     new_shape[-1] = shape[-1] // 2 + 1
 
