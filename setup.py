@@ -11,12 +11,12 @@ with open('LICENSE') as f:
 
 setup(
     name='FyeldGenerator',
-    version='0.1.0',
+    version='0.1.1',
     description='Simple package to symmetric generate random field.',
     long_description=readme,
     classifiers=[
         'Development status :: 1 - Alpha',
-        'License :: MIT',
+        'License :: CC-By-SA2.0',
         'Programming Language :: Python',
         'Topic :: Gaussian Random Field'
     ],
