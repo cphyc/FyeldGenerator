@@ -51,7 +51,6 @@ def generate_field(statistic, power_spectrum, shape, fft=np.fft, fft_args=dict()
         fftfreq = np.fft.fftfreq
         rfftfreq = np.fft.rfftfreq
 
-
     # Compute the k grid
     all_k = [fftfreq(s) for s in shape[:-1]] + \
             [rfftfreq(shape[-1])]
