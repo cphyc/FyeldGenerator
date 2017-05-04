@@ -61,25 +61,10 @@ def generate_field(statistic, power_spectrum, shape, unit_length=1,
     all_k = [fftfreq(s, d=unit_length) for s in shape[:-1]] + \
             [rfftfreq(shape[-1], d=unit_length)]
 
-    new_shape = np.array(shape)
-    new_shape[-1] = shape[-1] // 2 + 1
+    kgrid = np.meshgrid(*all_k, indexing='ij')
+    knorm = np.sqrt(np.sum(np.power(kgrid), 2), axis=0)
 
-    kgrid = [np.zeros(new_shape) for _ in range(len(shape))]
-
-    for i, kg in enumerate(kgrid):
-        sl = [slice(None) if j == i
-              else None
-              for j in range(len(shape))
-              ]
-        kg[:] = all_k[i][sl]
-
-    def Pkn(kgrid):
-        k2 = np.sqrt(np.sum([k**2 for k in kgrid], axis=0))
-
-        # Prevent overflow by forcing 0 power in k=0 mode
-        return np.where(k2 == 0, 0, np.sqrt(power_spectrum(k2)))
-
-    power_k = Pkn(kgrid)
+    power_k = np.where(knorm == 0, 0, np.sqrt(power_spectrum(knorm)))
     fftfield *= power_k
 
     return np.real(fft.irfftn(fftfield, **fft_args))
