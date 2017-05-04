@@ -62,7 +62,7 @@ def generate_field(statistic, power_spectrum, shape, unit_length=1,
             [rfftfreq(shape[-1], d=unit_length)]
 
     kgrid = np.meshgrid(*all_k, indexing='ij')
-    knorm = np.sqrt(np.sum(np.power(kgrid), 2), axis=0)
+    knorm = np.sqrt(np.sum(np.power(kgrid, 2), axis=0))
 
     power_k = np.where(knorm == 0, 0, np.sqrt(power_spectrum(knorm)))
     fftfield *= power_k
