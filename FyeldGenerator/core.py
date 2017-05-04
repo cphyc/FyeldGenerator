@@ -4,7 +4,8 @@ import numpy as np
 import six
 
 
-def generate_field(statistic, power_spectrum, shape, fft=np.fft, fft_args=dict()):
+def generate_field(statistic, power_spectrum, shape, unit_length=1,
+                   fft=np.fft, fft_args=dict()):
     """
     Generates a field given a stastitic and a power_spectrum.
 
@@ -20,6 +21,11 @@ def generate_field(statistic, power_spectrum, shape, fft=np.fft, fft_args=dict()
 
     shape: tuple
         The shape of the output field
+
+    unit_length: float
+        How much physical length represent 1pixel. For example a value of 10
+        mean that each pixel stands for 10 physical units. It has the
+        dimension of a physical_unit/pixel.
 
     fft: a numpy-like fft API
 
@@ -52,8 +58,9 @@ def generate_field(statistic, power_spectrum, shape, fft=np.fft, fft_args=dict()
         rfftfreq = np.fft.rfftfreq
 
     # Compute the k grid
-    all_k = [fftfreq(s) for s in shape[:-1]] + \
-            [rfftfreq(shape[-1])]
+    all_k = [fftfreq(s, d=unit_length) for s in shape[:-1]] + \
+            [rfftfreq(shape[-1], d=unit_length)]
+
     new_shape = np.array(shape)
     new_shape[-1] = shape[-1] // 2 + 1
 
