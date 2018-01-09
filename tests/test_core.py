@@ -15,7 +15,9 @@ class TestFieldGenerator(unittest.TestCase):
             return Pk
 
         def statistic(shape):
-            return 1 * np.exp(np.random.rand(*shape) * 2*np.pi)
+            a = np.random.normal(loc=0, scale=1, size=shape)
+            b = np.random.normal(loc=0, scale=1, size=shape)
+            return a + 1j * b
 
         self.field = generate_field(statistic=statistic,
                                     power_spectrum=spectrum(2),

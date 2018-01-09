@@ -22,7 +22,10 @@ def Pkgen(n):
 
 # Draw samples from a normal distribution
 def distrib(shape):
-    return np.random.normal(size=shape)
+    a = np.random.normal(loc=0, scale=1, size=shape)
+    b = np.random.normal(loc=0, scale=1, size=shape)
+    return a + 1j * b
+
 
 shape = (512, 512)
 

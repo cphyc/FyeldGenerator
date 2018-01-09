@@ -54,7 +54,6 @@ def generate_field(statistic, power_spectrum, shape, unit_length=1,
     if not six.callable(power_spectrum):
         raise Exception('`power_spectrum` should be callable')
 
-
     try:
         fftfreq = fft.fftfreq
         rfftfreq = fft.rfftfreq
@@ -95,7 +94,9 @@ if __name__ == '__main__':
 
     def distrib(shape):
         # Build a unit-distribution of complex numbers with random phase
-        return 1 * np.exp(1j * np.random.rand(*shape) * 2*np.pi)
+        a = np.random.normal(loc=0, scale=1, size=shape)
+        b = np.random.normal(loc=0, scale=1, size=shape)
+        return a + 1j * b
 
     shape = (512, 512)
 
