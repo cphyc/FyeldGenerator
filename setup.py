@@ -11,7 +11,7 @@ with open('LICENSE') as f:
 
 setup(
     name='FyeldGenerator',
-    version='0.1.2',
+    version='0.1.6',
     description='Simple package to symmetric generate random field.',
     long_description=readme,
     classifiers=[
