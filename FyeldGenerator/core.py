@@ -75,7 +75,6 @@ def generate_field(statistic, power_spectrum, shape, unit_length=1,
         # Draw a random sample in Fourier space
         fftfield = statistic(fourier_shape)
 
-    print(fftfield.shape, knorm.shape)
     power_k = np.where(knorm == 0, 0, np.sqrt(power_spectrum(knorm)))
     fftfield *= power_k
 
