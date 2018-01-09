@@ -15,7 +15,7 @@ def generate_field(statistic, power_spectrum, shape, unit_length=1,
         A function that takes returns a random array of a given signature,
         with signature (s) -> (B) with B.shape == s. Please note that the
         distribution is in *Fourier space* not in real space, unless you set
-        stat_real=True
+        stat_real=True. See the note below for more details.
 
     power_spectrum: callable
         A function that returns the power contained in a given mode,
@@ -38,10 +38,15 @@ def generate_field(statistic, power_spectrum, shape, unit_length=1,
         Set to true if you want the distribution to be drawn in real space and
         then transformed into Fourier space.
 
-    Returns:
-    --------
+    Returns
+    -------
     field: a real array of shape `shape` following the statistic
         with the given power_spectrum
+
+    Note
+    ----
+    When generation the distribution in Fourier mode, the result
+    should be complex and unitary. Only the phase is random.
     """
 
     if not six.callable(statistic):
@@ -89,7 +94,9 @@ if __name__ == '__main__':
         return Pk
 
     def distrib(shape):
-        return np.random.normal(size=shape)
+        # Build a unit-distribution of complex numbers with random phase
+        return 1 * np.exp(1j * np.random.rand(*shape) * 2*np.pi)
+
     shape = (512, 512)
 
     field = generate_field(distrib, Pkgen(2), shape)
