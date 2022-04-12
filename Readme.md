@@ -8,7 +8,6 @@ Example
 -------
 
 ```python
-
 from FyeldGenerator import generate_field
 import matplotlib.pyplot as plt
 import numpy as np
@@ -19,6 +18,7 @@ def Pkgen(n):
         return np.power(k, -n)
 
     return Pk
+
 
 # Draw samples from a normal distribution
 def distrib(shape):
@@ -31,8 +31,7 @@ shape = (512, 512)
 
 field = generate_field(distrib, Pkgen(2), shape)
 
-plt.imshow(field, cmap='seismic')
-
+plt.imshow(field, cmap="seismic")
 ```
 
 Install

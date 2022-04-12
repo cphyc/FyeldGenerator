@@ -1,0 +1,6 @@
+[tool.isort]
+profile = "black"
+combine_as_imports = true
+skip =  []
+known_first_party = ["FyeldGenerator"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
