@@ -50,3 +50,8 @@ pip install -e git+https://github.com/cphyc/FyeldGenerator.git#egg=FyeldGenerato
 License
 -------
 This work is licensed under the CC-BY-SA license. You are allowed to copy, modify and distribute it as long as you keed the license. See more in the LICENSE file.
+
+
+Citing
+------
+If you're using this package for research purposes, consider citing the [Zenodo entry (https://zenodo.org/record/7427712)](https://zenodo.org/record/7427712).
