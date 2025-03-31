@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v2.7.0
+    rev: v2.8.0
     hooks:
     -   id: setup-cfg-fmt
 -   repo: https://github.com/pre-commit/pre-commit-hooks
@@ -24,12 +24,12 @@ repos:
     - id: blacken-docs
       additional_dependencies: [black==22.1.0]
 -   repo: https://github.com/PyCQA/isort
-    rev: '6.0.0'
+    rev: '6.0.1'
     hooks:
     - id: isort
       name: isort (python)
 -   repo: https://github.com/PyCQA/flake8
-    rev: '7.1.1'
+    rev: '7.2.0'
     hooks:
     - id: flake8
       additional_dependencies: [
