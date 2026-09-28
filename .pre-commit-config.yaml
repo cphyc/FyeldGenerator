@@ -24,12 +24,12 @@ repos:
     - id: blacken-docs
       additional_dependencies: [black==22.1.0]
 -   repo: https://github.com/PyCQA/isort
-    rev: '9.0.0a3'
+    rev: '9.0.1'
     hooks:
     - id: isort
       name: isort (python)
 -   repo: https://github.com/PyCQA/flake8
-    rev: '7.3.0'
+    rev: '7.4.1'
     hooks:
     - id: flake8
       additional_dependencies: [
