@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v3.2.0
+    rev: v3.3.0
     hooks:
     -   id: setup-cfg-fmt
 -   repo: https://github.com/pre-commit/pre-commit-hooks
@@ -9,12 +9,12 @@ repos:
     - id: trailing-whitespace
     - id: end-of-file-fixer
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v3.21.2
+    rev: v3.22.0
     hooks:
     - id: pyupgrade
       args: [--py37-plus]
 -   repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 26.10.0
+    rev: 26.10.1
     hooks:
     - id: black
       language_version: python3
@@ -24,7 +24,7 @@ repos:
     - id: blacken-docs
       additional_dependencies: [black==22.1.0]
 -   repo: https://github.com/PyCQA/isort
-    rev: '9.0.2'
+    rev: '10.0.0b1'
     hooks:
     - id: isort
       name: isort (python)
